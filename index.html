@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Desafio Componentes</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    body{
+      background-image: url('https://rickandmortypod.com/wp-content/uploads/2018/11/cropped-RM_page-header_background1-3.png');
+      background-repeat: no-repeat, repeat;
+      background-size: cover;
+    }
+    #app {
+      font-family: Avenir, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-align: center;
+      color: #2c3e50;
+      margin-top: 60px;
+    }
+    .personaje {
+      display: flex;
+      margin: 15px;
+    }
+    .personaje img {
+      width: 125px;
+      border-radius: 50%;
+    }
+    .personaje h2 {
+      color: green;
+    }
+    h2{
+      padding-left: 1rem;
+      padding-top: 1.5rem;
+    }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <mi-componente></mi-componente>
+  </div>
+
+  <script>
+    Vue.component('mi-componente', {
+      data: function () {
+        return {
+          personajes: [
+            {
+              name: "Rick Sanchez",
+              image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+            },
+            {
+              name: "Morty Smith",
+              image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+            },
+            {
+              name: "Summer Smith",
+              image: "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+            },
+            {
+              name: "Beth Smith",
+              image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
+            },
+            {
+              name: "Jerry Smith",
+              image: "https://rickandmortyapi.com/api/character/avatar/5.jpeg",
+            },
+            {
+              name: "Abadango Cluster Princess",
+              image: "https://rickandmortyapi.com/api/character/avatar/6.jpeg",
+            },
+          ],
+        }
+      },
+      template: '<div><div v-for="(personaje, i) in personajes" :key="i" class="personaje"><img :src="personaje.image" /><div><h2>{{ personaje.name }}</h2></div></div></div>'
+    })
+    var app = new Vue({
+      el: '#app'
+    })
+  </script>
+</body>
+
+</html>
